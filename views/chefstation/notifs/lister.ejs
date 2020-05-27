@@ -1,0 +1,49 @@
+<%- include('../../partials/head.ejs') -%>
+<%- include('../../partials/navbar') -%>
+<div class="container-fluid py-6">
+  <div class="container">
+    <%- include('../navbar') -%>
+    <% if(locals.notifications) {  %>
+      <div class="head-table w-100">
+        <h3 class="w-50 mb-0"><i class="fas fa-cogs"></i> Gestion des notifications</span></h3>
+        <div class="d-flex flex-row-reverse bd-highlight w-50">
+          <button onclick="tableToExcel('myTable')" class="btn btn-dark"><i class="fas fa-file-excel"></i> EN Excel</button>
+          <button data-toggle="modal" data-target="#ajoutNotifModal" class="btn btn-success mr-3"><i class="fas fa-plus"></i> envoyer</button>
+        </div>
+      </div>
+    <div class="table-responsive">
+      <table class="table table-hover" id="myTable">
+        <thead>
+          <tr>
+            <th>station</th>
+            <th>sujet</th>
+            <th>message</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% notifications.forEach(u => {  %>
+          <tr>
+            <td><%= u.nom_station %></td>
+            <td><%= u.sujet %></td>
+            <td>
+              <p class="text-break"><%= u.message %></p>
+            </td>
+            <td>
+              <a href="/chefstation/notifications/modifier?notif=<%= u.id %>" class="btn btn-success btn-dismiss"><i
+                  class="fas fa-pen-square"></i></a>
+              <a href="/chefstation/notifications/supprimer?notif=<%= u.id %>" class="btn btn-danger btn-delete"><i
+                  class="fas fa-trash-alt"></i></a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <% } %>
+  </div>
+</div>
+<%- include('ajout.ejs') -%>
+<script src="/javascripts/lib/alert.js"></script>
+<script src="/javascripts/delete.js" defer></script>
+<%- include('../../partials/footer.ejs') -%>

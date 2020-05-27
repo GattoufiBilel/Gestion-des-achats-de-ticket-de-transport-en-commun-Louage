@@ -1,0 +1,51 @@
+<%- include('../partials/head.ejs') -%>
+<%- include('../partials/navbar') -%>
+<%- include('../partials/section',{ title:'Mes Reservations' , sub:'Mes Reservations'}) -%>
+<div class="container-fluid py-6">
+  <div class="container">
+    <% if(locals.reservations) { %>
+    <div class="table-responsive">
+      <table class="table" id="myTable">
+        <thead>
+          <tr>
+            <th>station de départ</th>
+            <th>station d'arrivée</th>
+            <th>h° depart</th>
+            <th>h° arrivée</th>
+            <th>date de départ</th>
+            <th>n° places</th>
+            <th>total</th>
+            <th>état</th>
+            <th>action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% reservations.forEach((u, i) => {  %>
+          <tr>
+            <td><%= u.nom_station %></td>
+            <td><%= u.arrive %></td>
+            <td><%= u.heure_depart %> h</td>
+            <td><%= u.heure_arrive %> h</td>
+            <td><%= locals.formatDate(u.date_depart) %></td>
+            <td><%= u.nb_place_reserver %></td>
+            <td><%= u.total_prix_places %></td>
+            <td>
+              <span class="badge badge-dark"><%= u.etat_reservation %></span>
+            </td>
+            <td>
+              <% if(u.etat_reservation === 'payer' && u.out === false) { %>
+              <a href="/reservations/annuler?r=<%= u.uid_reservation %>&v=<%= u.uid_voyage %>&nb=<%= u.nb_place_reserver %>"
+                class="btn btn-warning btn-cancel"><i class="fas fa-hand-paper"></i></a>
+              <% } %>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <% } %>
+  </div>
+</div>
+<script src="/javascripts/lib/alert.js"></script>
+<script src="/javascripts/delete.js" defer></script>
+<%- include('../partials/footer.ejs') -%>

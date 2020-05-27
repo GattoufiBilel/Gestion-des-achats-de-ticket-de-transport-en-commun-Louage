@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="/"><img src="/img/logoo.png" alt="logo"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><i class="fas fa-caret-square-down"></i></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="nav navbar-nav ml-auto">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item"><a class="nav-link mr-2" href="/a-propos">A propos</a></li>
+      <li class="nav-item"><a class="nav-link mr-2" href="/contact">CONTACT</a></li>
+      <li class="nav-item"><a class="nav-link mr-2 flipInY" href="#" id="weather"></a></li>
+      <li class="nav-item"><a class="nav-link mr-2" href="#" data-toggle="modal" data-target="#searchModal"><i class="fas fa-search"></i></a></li>
+
+      <% if(!locals.userInfo) { %>
+      <li class="nav-item">
+        <a href="/login" class="btn btn-light">LOGIN</a>
+      </li>
+      <% } else { %>
+
+      <li class="nav-item dropdown">
+        <% if(locals.avatar && locals.avatar.length > 45) { %>
+        <img src="<%= avatar %>" alt="profile image" class="img-nav ml-3" id="navbarDropdown">
+        <% } else { %>
+        <img src="/img/profile.png" alt="profile image" class="img-nav ml-3" id="navbarDropdown">
+        <% } %>
+
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/utilisateur/profile">Mon compte</a>
+
+          <% if(locals.Role.client === locals.userInfo.role) { %>
+          <a class="dropdown-item" href="/reservations/all">mes reservations</a>
+          <a class="dropdown-item" href="/utilisateur/notifications">mes notifications</a>
+          <% } %>
+
+          <% if(locals.Role && locals.userInfo.role === locals.Role.admin) { %>
+          <a class="dropdown-item" href="/admin">administration</a>
+          <% } %>
+
+          <% if(locals.Role && locals.userInfo.role === locals.Role.chefStation) { %>
+          <a class="dropdown-item" href="/chefstation">administration</a>
+          <% } %>
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/se-deconnecter">se deconnecter</a>
+        </div>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,54 @@
+<%- include('partials/head.ejs') -%>
+<%- include('./partials/progress.ejs') -%>
+<div class="bcg">
+  <%- include('partials/navbar') -%>
+  <style>
+    .search-form {
+      background-color: #00000063;
+      padding: 30px;
+      border-radius: 5px;
+      margin-top: -30px;
+    }
+
+    .search-form i {
+      color:#525252; position: absolute; left: 17px; bottom: 11px;
+    }
+  </style>
+  <div class="jumbotron container-v50">
+    <div class="container mb-0 py-5">
+      <div class="row">
+        <div class="col-md-6 center-flex mb-3">
+          <h1 class="display-4 flipInX">BIENVENUE</h1>
+          <p class="mb-5" style="color: #fff">
+            Louage partout, tout le temps parce que votre voyage ne s’arrête pas,
+            nous sommes toujours là pour vous.Notre service est simple et rapide.
+            Il est facile de trouver vos voyages et des cartes geographique indéquantes.
+          </p>
+        </div>
+        <div class="col-md-6 flipInY">
+          <form action="/voyages" class="search-form" method="POST">
+
+            <div class="form-group position-relative">
+              <i class="fas fa-street-view"></i>
+              <select class="custom-select pl-5" id="select-stations-i" name="nomstation"></select>
+            </div>
+
+            <div class="form-group position-relative">
+              <i class="fa fa-map-marker"></i>
+              <select class="custom-select pl-5" id="select-stations-iv" name="arrive"></select>
+            </div>
+
+            <div class="form-group position-relative">
+              <i class="fa fa-calendar"></i>
+              <input type="date" class="form-control pl-5" id="date-s" name="date" placeholder="Entrer date">
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block" id="btn-s-i">rechercher</button>
+          </form>
+        </div>
+        <!--/col-md-6-->
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer.ejs') -%>

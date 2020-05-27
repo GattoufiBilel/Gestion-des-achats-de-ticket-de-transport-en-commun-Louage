@@ -1,0 +1,29 @@
+<%- include('partials/head.ejs') -%>
+<%- include('./partials/progress.ejs') -%>
+<link rel="stylesheet" href="/stylesheets/auth.css">
+<div class="container-fluid p-0 m-0">
+  <div class="auth">
+    <form class="mx-400 w-100">
+      <h1 class="text-left mb-3">CONFIRMER VOTRE EMAIL</h1>
+      <hr>
+      <div class="form-group">
+          <div class="alert alert-danger mx-400" role="alert">Veuillez vérifier votre boîte de réception</div>
+      </div>
+      <div>
+        <% if(locals.msg) { %>
+        <% if(locals.e && locals.e.length >2) { %>
+        <hr>
+        <div class="alert alert-dark mx-400" role="alert"><%= msg %></div>
+        <% } else { %>
+        <hr>
+        <div class="alert alert-dark mx-400" role="alert"> <%= msg %> <a href="/login">se connecter</a></div>
+        <% } %>
+        <% } %>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="javascripts/validation.js" defer></script>
+</body>
+
+</html>

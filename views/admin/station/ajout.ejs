@@ -1,0 +1,53 @@
+<%- include('../../partials/head.ejs') -%>
+<%- include('../../partials/navbar') -%>
+<div class="container-fluid py-6">
+  <div class="container">
+    <%- include('../navbar') -%>
+    <% if(locals.chefStations && locals.chefStations.length > 0) { %>
+    <form action="/admin/stations/ajout" method="POST" id="form-station" class="form-bg-gray mb-3">
+
+      <div class="form-group">
+        <label for="chef">Chef de station</label>
+        <select class="form-control" id="chef" name="chef">
+          <% chefStations.forEach(chef => { %>
+          <option value="<%= chef.id %>"><%= chef.email %></option>
+          <% })%>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="nom">nom de station</label>
+        <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrer nom de station"
+          required>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="ville">ville</label>
+            <select class="form-control" id="ville" name="ville">
+              <% villeTunisie.forEach(v=> { %><option value="<%= v %>"><%= v %></option><% }) %>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="tel">tel</label>
+            <input type="tel" class="form-control" minlength="8" maxlength="8" id="tel" name="tel"
+              placeholder="Entrer tel de station" required>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-dark">Ajouter station</button>
+      <button type="reset" class="btn btn-danger">vider</button>
+    </form>
+    <div class="alert alert-danger dnone" role="alert"></div>
+    <%- include('../../snackbar') -%>
+    <% } else { %>
+    <div class="alert alert-danger" role="alert">Tous les chefs de stations sont affectés..</div>
+    <% } %>
+  </div>
+</div>
+<script src="/javascripts/pages/station.js" defer></script>
+<%- include('../../partials/footer.ejs') -%>

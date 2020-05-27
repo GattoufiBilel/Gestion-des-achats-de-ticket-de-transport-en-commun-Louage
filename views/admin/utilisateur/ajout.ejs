@@ -1,0 +1,49 @@
+<%- include('../../partials/head.ejs') -%>
+<%- include('../../partials/navbar') -%>
+<div class="container-fluid py-6">
+  <div class="container">
+    <%- include('../navbar') -%>
+    <form action="/admin/utilisateurs/ajout" method="POST" class="form-general form-bg-gray mb-3">
+      <div class="row">
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrer nom" required>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="prenom">prenom</label>
+            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrer prenom" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">adresse email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Entrer email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Entrer mot de passe"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="user_role">Role d'utilisateur</label>
+        <select class="form-control" id="user_role" name="role">          
+          <option value="chef_station">chef de station</option>
+          <option value="client">client</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-dark">Ajouter utilisateur</button>
+      <button type="reset" class="btn btn-danger">vider</button>
+    </form>
+    <%- include('../../snackbar') -%>
+  </div>
+</div>
+<%- include('../../partials/footer.ejs') -%>

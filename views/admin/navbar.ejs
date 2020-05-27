@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs mb-3">
+  <li class="nav-item">
+    <a class="nav-link" href="/admin" style="background-color: #8ed188 !important; color:#fff !important">
+      <i class="fas fa-tachometer-alt"></i> tableau de bord
+    </a>
+  </li>
+  <% if(locals.Role && locals.userInfo.role === locals.Role.admin) { %>
+  <li class="nav-item"><a class="nav-link" href="/admin/utilisateurs">Utilisateurs</a></li>
+  <li class="nav-item"><a class="nav-link" href="/admin/stations">Stations</a></li>
+  <% } %>
+</ul>

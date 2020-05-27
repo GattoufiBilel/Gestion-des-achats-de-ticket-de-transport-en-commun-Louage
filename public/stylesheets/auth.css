@@ -1,0 +1,16 @@
+.container-fluid {
+  background: url(/img/bg.jpg) no-repeat;min-height: 100vh;
+}
+
+.auth {
+  color: #ffffff !important;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.35));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.auth h1 { font-size: 30px !important;}
+.auth h1 i { float: right;}
+.auth hr { background-color: #909090 !important;}
+.auth form {max-width: 430px;}

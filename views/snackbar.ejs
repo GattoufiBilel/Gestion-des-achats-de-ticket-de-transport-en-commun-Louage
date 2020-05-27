@@ -1,0 +1,7 @@
+<% if(locals.msg) { %>
+<% if(locals.e && locals.e.length > 2) {   %>
+<div class="alert alert-danger" role="alert"><i class="fas fa-info-circle"></i> <%= msg %></div>
+<% } else { %>
+<div class="alert alert-dark" role="alert"><i class="fas fa-info-circle"></i> <%= msg %></div>
+<% } %>
+<% } %>

@@ -1,0 +1,48 @@
+<%- include('../partials/head.ejs') -%>
+<%- include('../partials/progress.ejs') -%>
+<%- include('../partials/navbar') -%>
+<div class="container-fluid py-5">
+  <div class="container">
+    <%- include('navbar') -%>
+    <div class="row text-uppercase mb-5">
+      <div class="col-md-6 text-center mb-3">
+        <div class="card box-light">
+          <div class="card-body">
+            <h1><i class="fas fa-user"></i></h1>
+            <h5 class="card-title">nombre des utilisateurs</h5>
+            <h2 id="len-users"></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 text-center mb-3">
+        <div class="card box-light">
+          <div class="card-body">
+            <h1><i class="fab fa-hubspot"></i></h1>
+            <h5 class="card-title">nombre des stations</h5>
+            <h2 id="len-stations"></h2>            
+          </div>
+        </div>
+      </div>
+    </div><!-- end row-->
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">utilisateurs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">stations</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div id="chart-utilisateurs"></div>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div id="chart-stations"></div>
+      </div>
+    </div>
+    <script src="/javascripts/charts/apexcharts.js" defer></script>
+    <script src="/javascripts/charts/admin-charts.js" defer></script>
+  </div>
+</div>
+<%- include('../partials/footer.ejs') -%>

@@ -1,0 +1,27 @@
+var ville = [
+  'Ariana',
+  'Béja',
+  'Ben Arous',
+  'Bizerte',
+  'Gabes',
+  'Gafsa',
+  'Jendouba',
+  'Kairouan',
+  'Kasserine',
+  'Kebili',
+  'La Manouba',
+  'Le Kef',
+  'Mahdia',
+  'Médenine',
+  'Monastir',
+  'Nabeul',
+  'Sfax',
+  'Sidi Bouzid',
+  'Siliana',
+  'Sousse',
+  'Tataouine',
+  'Tozeur',
+  'Tunis',
+  'Zaghouan'
+]
+module.exports = ville

@@ -1,0 +1,27 @@
+<style>
+.input-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+</style>
+<div class="col-md-3 mb-3">
+  <form action="/utilisateur/profile/avatar" method="POST" enctype="multipart/form-data">
+    <div class="input-group" style="justify-content: center">
+      <div class="img-hover-zoom img-hover-zoom--colorize">
+        <% if(locals.avatar && locals.avatar.length > 45) { %>
+        <img src="<%= locals.avatar %>" alt="photo de profile" class="img-thumbnail img-profile fade-in mb-3">
+        <% } else { %>
+        <img src="/img/profile.png" alt="photo de profile" class="img-thumbnail img-profile fade-in mb-3">
+        <% } %>
+        <input type="file" class="input-img" aria-describedby="inputGroupFileAddon04" name="avatar">
+        <label class="custom-file-label" style="height: 255px; opacity: 0; cursor: pointer;">Choose file</label>
+      </div>
+    </div>
+    <button class="btn btn-dark btn-block btn-update-avatar" type="submit" disabled>mettre a jour</button>
+  </form>
+</div>

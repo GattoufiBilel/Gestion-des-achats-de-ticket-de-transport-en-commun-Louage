@@ -1,0 +1,35 @@
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-uppercase"><i class="fas fa-search"></i> Trouver votre prochaine destination</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      <div class="modal-body">
+        <form action="/voyages" method="POST">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="select-stations">DE</label>
+                <select class="custom-select" id="select-stations" name="nomstation"></select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="select-stations-v">VERS</label>
+                <select class="custom-select" id="select-stations-v" name="arrive"></select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="date" class="form-control" id="date-modal" name="date" placeholder="Entrer date">
+          </div>
+          <button type="submit" class="btn btn-success btn-block" id="btn-date-modal">rechercher</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

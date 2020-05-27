@@ -1,0 +1,50 @@
+<%- include('../../partials/head.ejs') -%>
+<%- include('../../partials/navbar') -%>
+<div class="container-fluid py-6">
+  <div class="container">
+    <%- include('../navbar') -%>
+    <% if(locals.reservations) { %>
+      <div class="head-table w-100">
+        <h3 class="w-50 mb-0"><i class="fas fa-cogs"></i> Gestion des réservations</span></h3>
+        <div class="d-flex flex-row-reverse bd-highlight w-50">
+          <button onclick="tableToExcel('myTable')" class="btn btn-dark"><i class="fas fa-file-excel"></i> EN Excel</button>          
+        </div>
+      </div>
+    <div class="table-responsive mb-3">
+      <table class="table" id="myTable">
+        <thead>
+          <tr>
+            <th>départ</th>
+            <th>arrivée</th>
+            <th>h° depart</th>
+            <th>h° arrivée</th>
+            <th>d° depart</th>
+            <th>n° reservées</th>
+            <th>total</th>
+            <th>état</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% reservations.forEach((u, i) => {  %>
+          <tr>
+            <td><%= nom_station %></td>
+            <td><%= u.arrive %></td>
+            <td><%= u.heure_depart %> h</td>
+            <td><%= u.heure_arrive %> h</td>
+            <td><%= u.date_depart %></td>
+            <td><%= u.nb_place_reserver %></td>
+            <td><%= u.total_prix_places %></td>
+            <td>
+              <span class="badge badge-dark"><%= u.etat_reservation %></span>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <% } %>
+  </div>
+</div>
+<script src="/javascripts/lib/alert.js"></script>
+<script src="/javascripts/delete.js" defer></script>
+<%- include('../../partials/footer.ejs') -%>

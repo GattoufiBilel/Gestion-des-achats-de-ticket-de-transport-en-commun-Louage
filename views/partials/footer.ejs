@@ -1,0 +1,29 @@
+<a id="back-to-top" href="#"><i class="fas fa-arrow-up"></i></a>
+
+<footer class="py-4 text-white-50">
+  <div class="container mb-0">
+    <div>
+      <img src="/img/logo.png" alt="" width="30" height="30">
+      <img src="/img/logoo.png" alt="" width="100" height="30">
+      <p class="font-s14 mt-1 text-uppercase">Copyright &copy; Louage</p>
+    </div>
+  </div>
+</footer>
+<%- include('chercher.ejs') -%>
+<script src="/javascripts/search.js" defer></script>
+<script src="/javascripts/validation.js" defer></script>
+<script src="/javascripts/navbar-collapse.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="/javascripts/weather.js" defer></script>
+<script src="/javascripts/tableToExcel.js" defer></script>
+<script defer>
+  window.addEventListener("scroll", function (event) {
+    document.getElementById('back-to-top').style.display = this.scrollY > 100 ? 'block' : 'none'
+  }, false)
+</script>
+</body>
+</html>

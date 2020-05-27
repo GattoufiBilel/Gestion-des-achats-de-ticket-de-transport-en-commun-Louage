@@ -1,0 +1,61 @@
+<%- include('../../partials/head.ejs') -%>
+<%- include('../../partials/navbar') -%>
+<div class="container-fluid py-6">
+  <div class="container">
+    <%- include('../navbar') -%>
+    <form action="/chefstation/voyages/modifier" method="POST" id="form-voyage" class="form-bg-gray mb-3">
+      <input type="text" name="uidvoyage" id="uidvoyage" value="<%= voyage.uid_voyage %>" hidden readonly>
+
+      <div class="form-group">
+        <label for="arrive">statin d'arrivée</label>
+        <input type="text" class="form-control" id="arrive" pattern="[a-zA-Z ]+" name="arrive"
+          value="<%= voyage.arrive %>" required readonly>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="heureDepart">heure de Départ</label>
+            <input type="number" class="form-control" id="heureDepart" min="0" max="24" name="heureDepart"
+              value="<%= voyage.heure_depart %>" required>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="heureArrive">heure d'arrivée</label>
+            <input type="number" class="form-control" id="heureArrive" min="0" max="24" name="heureArrive"
+              value="<%= voyage.heure_arrive %>" required>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="dateDepart">date de Départ</label>
+            <input type="date" class="form-control" id="dateDepart" name="dateDepart" value="<%= voyage.date_depart %>"
+              required>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="prixPlace">prix d'une place</label>
+            <input type="text" class="form-control" id="prixPlace" name="prixPlace" value="<%= voyage.prix_place %>"
+              required>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="nbPlaces">nombre de Places</label>
+            <input type="number" class="form-control" id="nbPlaces" min="0" max="9" name="nbPlaces"
+              value="<%= voyage.nb_places %>" required>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-dark">mettre à jour voyage</button>
+    </form>
+    <div class="alert alert-danger dnone" role="alert"></div>
+  </div>
+</div>
+<script src="/javascripts/pages/voyage.js" defer></script>
+<%- include('../../partials/footer.ejs') -%>

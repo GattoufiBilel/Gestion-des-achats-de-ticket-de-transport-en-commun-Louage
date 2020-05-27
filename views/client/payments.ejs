@@ -1,0 +1,127 @@
+<%- include('../partials/head.ejs') -%>
+<%- include('../partials/progress.ejs') -%>
+<%- include('../partials/navbar') -%>
+<section class="page-header">
+  <div class="col-md-12">
+    <h3>Paiement</h3>
+  </div>
+  <div class="bread">
+    <a href="/">accueil </a>
+    <a href="#" disabled> / paiement</a>
+  </div>
+</section>
+
+<div class="container-fluid py-6">
+  <% if(locals.voyage) { %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="form-general form-bg-gray">
+
+          <div class="form-group">
+            <label>station de départ</label>
+            <input type="text" class="form-control" value="<%= voyage.nom_station %>" disabled>
+          </div>
+
+          <div class="form-group">
+            <label>station d'arrivée</label>
+            <input type="text" class="form-control" value="<%= voyage.arrive %>" disabled>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>heure de départ</label>
+                <input type="text" class="form-control" value="<%= voyage.heure_depart %>" disabled>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>heure d'arrivée</label>
+                <input type="text" class="form-control" value="<%= voyage.heure_arrive %>" disabled>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>date de départ</label>
+                <input type="text" class="form-control" value="<%= voyage.date_depart %>" disabled>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nbplacesreserv">nombre de places reservées</label>
+            <input type="number" class="form-control" id="nbplacesreserv" name="nbplacesreserv"
+              value="<%= nbplacesreserv %>" disabled>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label>Prix d'une place</label>
+              <input type="text" class="form-control display-3" value="<%= voyage.prix_place %> DNT" required disabled>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>prix total à payer</label>
+                <input type="text" class="form-control display-3" value="<%= total %>" required disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <form action="/payments/confirmer" method="POST" id="form-paiement" class="form-general form-bg-gray mb-3">
+          <input type="text" name="uidvoyage" id="uidvoyage" value="<%= uidvoyage %>" required hidden readonly>
+
+          <input type="text" class="form-control" id="nb_places" name="nb_places" value="<%= voyage.nb_places %>"
+            required hidden readonly>
+
+          <input type="number" class="form-control" id="nbplacesreserv" name="nbplacesreserv"
+            value="<%= nbplacesreserv %>" required hidden readonly>
+
+          <input type="text" class="form-control display-3" id="total" name="total" value="<%= total %>" required hidden
+            readonly>
+
+          <div class="form-group">
+            <label>numero de carte</label>
+            <input type="tel" class="form-control" id="numcarte" pattern="[0-9]{16}" name="numcarte" minlength="16"
+              maxlength="16" placeholder="4242 4242 4242 4242" required>
+          </div>
+
+          <div class="form-group">
+            <label>code secret</label>
+            <input type="tel" minlength="8" maxlength="8" class="form-control" id="codesecret" name="codesecret"
+              pattern="[0-9]{8}" placeholder="1234 45678" required>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>date d'expiration</label>
+                <input type="text" class="form-control" id="datexp" pattern="[0-9]{2}/[0-9]{2}" name="datexp"
+                  placeholder="MM/AA" required>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>CVV</label>
+                <input type="tel" minlength="3" maxlength="3" pattern="[0-9]{3}" class="form-control" id="cvc"
+                  name="cvc" placeholder="747" required>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-dark" id="btn-payment">vérifier et payer</button>
+          <button type="reset" class="btn btn-danger">vider</button>
+        </form>
+        <div class="alert alert-danger dnone" role="alert"></div>
+      </div>
+    </div><!-- end row -->
+  </div>
+  <% } %>
+</div>
+<script src="/javascripts/pages/paiement.js" defer></script>
+<%- include('../partials/footer.ejs') -%>
